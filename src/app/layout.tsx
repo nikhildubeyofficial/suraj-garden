@@ -24,6 +24,8 @@ export const metadata: Metadata = {
   description: "Experience the perfect blend of natural beauty and luxurious elegance at Suraj Garden, Ujjain's premier destination for weddings, corporate events, and grand celebrations.",
 };
 
+import { Providers } from "./provider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -35,9 +37,11 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
-        <Navbar />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+        <Providers>
+          <Navbar />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

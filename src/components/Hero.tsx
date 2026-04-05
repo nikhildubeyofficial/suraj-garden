@@ -5,7 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
+import { useTranslation } from "@/context/LanguageContext";
+
 export default function Hero() {
+  const { t } = useTranslation();
+  
   return (
     <section className="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -34,15 +38,15 @@ export default function Hero() {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="text-primary-gold font-medium tracking-[0.2em] uppercase text-sm mb-6 block"
           >
-            Welcome to Ujjain&apos;s Premium Venue
+            {t.hero.welcome}
           </motion.span>
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-8 drop-shadow-lg max-w-4xl leading-tight">
-            Celebrate Life&rsquo;s Most Beautiful <span className="text-primary-gold font-serif italic pr-2">Moments.</span>
+            {t.hero.title_part1} <span className="text-primary-gold font-serif italic pr-2">{t.hero.title_part2}</span>
           </h1>
           
           <p className="text-lg md:text-xl text-white/90 max-w-2xl mb-12 font-light leading-relaxed">
-            Experience the perfect blend of natural beauty and luxurious elegance. Suraj Garden offers an unforgettable backdrop for your dream wedding and grand celebrations.
+            {t.hero.subtitle}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
@@ -51,7 +55,7 @@ export default function Hero() {
               className="w-full sm:w-auto group relative px-8 py-4 bg-primary-red text-white overflow-hidden rounded-full shadow-2xl transition-all hover:scale-105"
             >
               <span className="relative z-10 flex items-center justify-center font-medium">
-                Plan Your Event
+                {t.hero.plan_event}
                 <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
               <div className="absolute inset-0 bg-red-900 transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-300 ease-out" />
@@ -61,7 +65,7 @@ export default function Hero() {
               href="#gallery" 
               className="w-full sm:w-auto px-8 py-4 bg-transparent border border-white/30 text-white rounded-full hover:bg-white/10 hover:border-white transition-all backdrop-blur-sm font-medium"
             >
-              Explore Gallery
+              {t.hero.explore}
             </Link>
           </div>
         </motion.div>
@@ -74,7 +78,7 @@ export default function Hero() {
         transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
       >
         <Link href="#about" className="flex flex-col items-center opacity-70 hover:opacity-100 transition-opacity">
-          <span className="text-xs text-white uppercase tracking-widest mb-2 font-medium">Scroll down</span>
+          <span className="text-xs text-white uppercase tracking-widest mb-2 font-medium">{t.hero.scroll}</span>
           <div className="w-px h-8 bg-gradient-to-b from-primary-gold to-transparent" />
         </Link>
       </motion.div>

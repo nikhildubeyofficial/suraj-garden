@@ -1,6 +1,11 @@
+"use client";
+
 import Link from "next/link";
+import { useTranslation } from "@/context/LanguageContext";
 
 export default function Footer() {
+  const { t } = useTranslation();
+  
   return (
     <footer className="bg-white dark:bg-black border-t border-gray-200 dark:border-white/10 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -12,7 +17,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-foreground/70 font-light max-w-md mb-8">
-              Ujjain&apos;s most premium outdoor venue, offering unparalleled elegance and world-class services for your most cherished celebrations.
+              {t.footer.tagline} {t.about.subtitle_alt}
             </p>
             <div className="flex space-x-4">
               <a href="#" className="w-10 h-10 rounded-full bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center text-foreground/70 hover:text-primary-gold hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors">
@@ -30,11 +35,11 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-foreground mb-6 uppercase tracking-wider text-sm">Quick Links</h4>
             <ul className="space-y-3">
-              <li><Link href="#about" className="text-foreground/70 hover:text-primary-gold font-light transition-colors">About Us</Link></li>
-              <li><Link href="#services" className="text-foreground/70 hover:text-primary-gold font-light transition-colors">Our Services</Link></li>
-              <li><Link href="#gallery" className="text-foreground/70 hover:text-primary-gold font-light transition-colors">Gallery</Link></li>
-              <li><Link href="#pricing" className="text-foreground/70 hover:text-primary-gold font-light transition-colors">Packages</Link></li>
-              <li><Link href="#contact" className="text-foreground/70 hover:text-primary-gold font-light transition-colors">Contact</Link></li>
+              <li><Link href="#about" className="text-foreground/70 hover:text-primary-gold font-light transition-colors">{t.navbar.about}</Link></li>
+              <li><Link href="#services" className="text-foreground/70 hover:text-primary-gold font-light transition-colors">{t.navbar.services}</Link></li>
+              <li><Link href="#gallery" className="text-foreground/70 hover:text-primary-gold font-light transition-colors">{t.navbar.gallery}</Link></li>
+              <li><Link href="#pricing" className="text-foreground/70 hover:text-primary-gold font-light transition-colors">{t.navbar.pricing}</Link></li>
+              <li><Link href="#contact" className="text-foreground/70 hover:text-primary-gold font-light transition-colors">{t.navbar.contact}</Link></li>
             </ul>
           </div>
           
@@ -49,7 +54,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-gray-200 dark:border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-foreground/60 font-light">
-          <p>&copy; {new Date().getFullYear()} Suraj Garden. All rights reserved.</p>
+          <p>{t.footer.copyright}</p>
           <p className="mt-2 md:mt-0">Designed and Developed by Kapish Technologies</p>
         </div>
       </div>

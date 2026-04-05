@@ -3,16 +3,25 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const images = [
-  { src: "/hero-venue.png", alt: "Suraj Garden Venue" },
-  { src: "/gallery-wedding.png", alt: "Elegant Wedding Setup" },
-  { src: "/gallery-banquet.png", alt: "Royal Banquet Hall" },
-  { src: "/gallery-lawn.png", alt: "Lush Greenery" },
-  { src: "/gallery-food.png", alt: "Gourmet Catering" },
-  { src: "/hero-venue.png", alt: "Evening Lighting" },
+import { useTranslation } from "@/context/LanguageContext";
+
+const imageSources = [
+  "/hero-venue.png",
+  "/gallery-wedding.png",
+  "/gallery-banquet.png",
+  "/gallery-lawn.png",
+  "/gallery-food.png",
+  "/hero-venue.png",
 ];
 
 export default function Gallery() {
+  const { t } = useTranslation();
+  
+  const images = t.gallery.images.map((img, i) => ({
+    ...img,
+    src: imageSources[i],
+  }));
+
   return (
     <section id="gallery" className="py-24 bg-white dark:bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,7 +32,7 @@ export default function Gallery() {
             viewport={{ once: true }}
             className="text-primary-gold font-medium tracking-widest uppercase text-sm mb-4 block"
           >
-            Our Gallery
+             {t.gallery.label}
           </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -32,7 +41,7 @@ export default function Gallery() {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-bold text-foreground mb-6"
           >
-            Capturing the <span className="text-primary-red">Magic</span>
+            {t.gallery.title_main} <span className="text-primary-red">{t.gallery.title_span}</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -41,7 +50,7 @@ export default function Gallery() {
             transition={{ delay: 0.2 }}
             className="text-foreground/70 text-lg font-light"
           >
-            A glimpse into the stunning events hosted at Suraj Garden. Every picture tells a story of elegance, joy, and unforgettable celebrations.
+            {t.gallery.subtitle}
           </motion.p>
         </div>
 

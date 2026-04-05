@@ -3,40 +3,18 @@
 import { motion } from "framer-motion";
 import { Trees, UtensilsCrossed, Music, Camera, Sparkles, Building2 } from "lucide-react";
 
-const services = [
-  {
-    icon: Building2,
-    title: "Grand Banquet",
-    description: "Our air-conditioned banquet hall features crystal chandeliers and elegant decor, perfectly suited for royal indoor celebrations.",
-  },
-  {
-    icon: Trees,
-    title: "Lush Lawns",
-    description: "Expansive green lawns that provide a breathtaking open-air setting for thousands of guests under the starlit sky.",
-  },
-  {
-    icon: UtensilsCrossed,
-    title: "Gourmet Catering",
-    description: "A symphony of flavors tailored to your taste. Our culinary experts craft diverse menus that delight every palate.",
-  },
-  {
-    icon: Sparkles,
-    title: "Luxury Decor",
-    description: "Bespoke decorations from grand floral arches to premium lighting setups that transform the space to match your theme.",
-  },
-  {
-    icon: Music,
-    title: "Entertainment",
-    description: "We provide comprehensive sound and lighting systems along with connections to the city&apos;s finest performers and DJs.",
-  },
-  {
-    icon: Camera,
-    title: "Event Management",
-    description: "From planning conceptualization to ground execution, our experts handle everything so you can simply enjoy the moment.",
-  },
-];
+import { useTranslation } from "@/context/LanguageContext";
+
+const icons = [Building2, Trees, UtensilsCrossed, Sparkles, Music, Camera];
 
 export default function Services() {
+  const { t } = useTranslation();
+  
+  const services = t.services.items.map((item, i) => ({
+    ...item,
+    icon: icons[i],
+  }));
+
   return (
     <section id="services" className="py-24 bg-zinc-50 dark:bg-[#050303] relative overflow-hidden">
       {/* Decorative elements */}
@@ -51,7 +29,7 @@ export default function Services() {
             viewport={{ once: true }}
             className="text-primary-red dark:text-primary-gold font-medium tracking-widest uppercase text-sm mb-4 block"
           >
-            What We Offer
+            {t.services.label}
           </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -60,8 +38,8 @@ export default function Services() {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-bold text-foreground mb-6"
           >
-            Bespoke Services for <br />
-            <span className="font-serif italic text-primary-gold">Unforgettable</span> Events
+            {t.services.title} <br />
+            <span className="font-serif italic text-primary-gold">{t.services.title_span}</span> {t.services.title_end}
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -70,7 +48,7 @@ export default function Services() {
             transition={{ delay: 0.2 }}
             className="text-foreground/70 text-lg font-light"
           >
-            A dedicated suite of services customized to ensure your event flows precisely as envisioned, with luxury infused into every detail.
+            {t.services.subtitle}
           </motion.p>
         </div>
 
@@ -95,7 +73,7 @@ export default function Services() {
               </h3>
               
               <p className="text-foreground/70 font-light leading-relaxed">
-                {service.description}
+                {service.desc}
               </p>
             </motion.div>
           ))}

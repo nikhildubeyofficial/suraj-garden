@@ -3,28 +3,12 @@
 import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 
-const testimonials = [
-  {
-    name: "Anjali & Rahul",
-    role: "Married 2025",
-    content: "Our dream wedding came to life at Suraj Garden. The lush lawns and the majestic decor were straight out of a fairytale. The management team went above and beyond.",
-    rating: 5,
-  },
-  {
-    name: "Vikram Sharma",
-    role: "Corporate Event",
-    content: "We hosted our annual company gala here. The banquet facilities and catering were exceptional. Highly professional staff and beautiful ambiance.",
-    rating: 5,
-  },
-  {
-    name: "Sneha Patel",
-    role: "Sangeet Ceremony",
-    content: "The lighting, the space, ad the sheer grandeur of the venue made our sangeet unforgettable. The gold and red themes they executed were breathtaking.",
-    rating: 5,
-  },
-];
+import { useTranslation } from "@/context/LanguageContext";
 
 export default function Testimonials() {
+  const { t } = useTranslation();
+  const testimonials = t.testimonials.items;
+
   return (
     <section className="py-24 bg-white dark:bg-[#0a0505] relative overflow-hidden">
       {/* Background Accent */}
@@ -38,7 +22,7 @@ export default function Testimonials() {
             viewport={{ once: true }}
             className="text-primary-gold font-medium tracking-widest uppercase text-sm mb-4 block"
           >
-            Client Stories
+            {t.testimonials.label}
           </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -47,7 +31,7 @@ export default function Testimonials() {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-bold text-foreground mb-6"
           >
-            Words of <span className="text-primary-red">Appreciation</span>
+            {t.testimonials.title.replace(t.testimonials.title_span, '')} <span className="text-primary-red">{t.testimonials.title_span}</span>
           </motion.h2>
         </div>
 
@@ -64,7 +48,7 @@ export default function Testimonials() {
               <Quote className="absolute top-6 right-6 w-12 h-12 text-primary-gold/10" />
               
               <div className="flex space-x-1 mb-6">
-                {[...Array(test.rating)].map((_, idx) => (
+                {[...Array(5)].map((_, idx) => (
                   <Star key={idx} className="w-5 h-5 fill-primary-gold text-primary-gold" />
                 ))}
               </div>

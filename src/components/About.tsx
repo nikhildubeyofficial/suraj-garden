@@ -3,16 +3,12 @@
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 
-const features = [
-  "Lush Green Landscapes",
-  "Elegant Banquet Halls",
-  "Premium Catering Services",
-  "Ample Parking Space",
-  "Prime Location in Ujjain",
-  "Dedicated Event Managers",
-];
+import { useTranslation } from "@/context/LanguageContext";
 
 export default function About() {
+  const { t } = useTranslation();
+  const features = t.about.features;
+
   return (
     <section id="about" className="py-24 bg-white dark:bg-black/90">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -26,20 +22,20 @@ export default function About() {
           >
             <div>
               <span className="text-primary-gold font-medium tracking-wider uppercase text-sm block mb-3">
-                Discover Suraj Garden
+                {t.navbar.about}
               </span>
               <h2 className="text-3xl md:text-5xl font-bold text-foreground">
-                Where Your Dreams <br className="hidden md:block" />
-                <span className="text-primary-red">Take Root</span>
+                {t.about.title_main} <br className="hidden md:block" />
+                <span className="text-primary-red">{t.about.title_span}</span>
               </h2>
             </div>
             
             <p className="text-foreground/80 text-lg leading-relaxed font-light">
-              Nestled in the spiritual heart of Ujjain, Suraj Garden is the city&apos;s most exquisite venue for grand celebrations. We blend natural beauty with luxurious comfort to bring your most cherished moments to life. 
+              {t.about.subtitle_alt}
             </p>
             
             <p className="text-foreground/80 text-lg leading-relaxed font-light">
-              From intimate gatherings to majestic weddings, our sprawling lawns and opulent banquet facilities are designed to exceed your expectations. Our dedicated team ensures flawless execution, leaving you free to immerse yourself in the joy of the occasion.
+              {t.about.subtitle_alt2}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
@@ -60,7 +56,7 @@ export default function About() {
 
             <div className="pt-6">
               <div className="inline-flex items-center pb-1 border-b-2 border-primary-red hover:border-primary-gold transition-colors text-primary-red hover:text-primary-gold font-semibold uppercase tracking-widest cursor-pointer">
-                Know More About Us
+                {t.about.know_more}
               </div>
             </div>
           </motion.div>
@@ -91,7 +87,7 @@ export default function About() {
                 className="absolute -bottom-8 -left-8 bg-white dark:bg-zinc-900 p-6 rounded-2xl shadow-xl max-w-[200px]"
               >
                 <div className="text-4xl font-bold text-primary-gold mb-1">10+</div>
-                <div className="text-sm text-foreground/80 font-medium">Years of hosting unforgettable events</div>
+                <div className="text-sm text-foreground/80 font-medium">{t.about.experience}</div>
               </motion.div>
             </div>
           </motion.div>

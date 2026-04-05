@@ -4,19 +4,22 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-
-const navLinks = [
-  { name: "Home", href: "#" },
-  { name: "About", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Gallery", href: "#gallery" },
-  { name: "Pricing", href: "#pricing" },
-  { name: "Contact", href: "#contact" },
-];
+import { useTranslation } from "@/context/LanguageContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar() {
+  const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
+  const navLinks = [
+    { name: t.navbar.home, href: "#" },
+    { name: t.navbar.about, href: "#about" },
+    { name: t.navbar.services, href: "#services" },
+    { name: t.navbar.gallery, href: "#gallery" },
+    { name: t.navbar.pricing, href: "#pricing" },
+    { name: t.navbar.contact, href: "#contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,7 +49,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -58,17 +61,19 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
+            <LanguageSwitcher scrolled={scrolled} />
             <button className={`px-6 py-2.5 rounded-full text-sm font-medium transition-transform active:scale-95 ${
               scrolled 
               ? "bg-primary-red text-white hover:bg-red-900" 
               : "bg-white text-primary-red hover:bg-gray-100"
             }`}>
-              Book Venue
+              {t.navbar.book}
             </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center gap-4">
+            <LanguageSwitcher scrolled={scrolled} />
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={scrolled ? "text-foreground" : "text-white"}
@@ -102,7 +107,7 @@ export default function Navbar() {
               ))}
               <div className="pt-2 pb-2">
                 <button className="w-full bg-primary-red text-white py-3 rounded-md font-medium">
-                  Book Venue
+                  {t.navbar.book}
                 </button>
               </div>
             </div>
