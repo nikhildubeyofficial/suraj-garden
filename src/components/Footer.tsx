@@ -50,7 +50,7 @@ export default function Footer() {
         
         <div className="border-t border-gray-200 dark:border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-foreground/60 font-light">
           <p>&copy; {new Date().getFullYear()} Suraj Garden. All rights reserved.</p>
-          <p className="mt-2 md:mt-0">Designed with precision.</p>
+          <p className="mt-2 md:mt-0">Designed and Developed by Kapish Technologies</p>
         </div>
       </div>
     </footer>

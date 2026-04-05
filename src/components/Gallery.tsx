@@ -6,9 +6,10 @@ import Image from "next/image";
 const images = [
   { src: "/hero-venue.png", alt: "Suraj Garden Venue" },
   { src: "/gallery-wedding.png", alt: "Elegant Wedding Setup" },
+  { src: "/gallery-banquet.png", alt: "Royal Banquet Hall" },
+  { src: "/gallery-lawn.png", alt: "Lush Greenery" },
+  { src: "/gallery-food.png", alt: "Gourmet Catering" },
   { src: "/hero-venue.png", alt: "Evening Lighting" },
-  { src: "/gallery-wedding.png", alt: "Royal Mandap" },
-  { src: "/hero-venue.png", alt: "Banquet Setup" },
 ];
 
 export default function Gallery() {
